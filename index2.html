@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesaler Contact Directory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .wholesaler {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #fff;
+        }
+        .wholesaler h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .wholesaler p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            margin-top: 2rem;
+        }
+        .search-box {
+            margin-bottom: 2rem;
+            padding: 0.5rem;
+            width: 100%;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #scanner {
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+        #camera-feed {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Wholesaler Contact Directory</h1>
+    </header>
+    <div class="container">
+        <h1>Contact Details</h1>
+
+        <!-- Search Box -->
+        <input type="text" id="searchInput" class="search-box" placeholder="Search for products..." onkeyup="filterWholesalers()">
+
+        <!-- Barcode Scanner -->
+        <button id="startScanner" onclick="startBarcodeScanner()">Start Barcode Scanner</button>
+        <div id="scanner">
+            <video id="camera-feed"></video>
+            <p id="barcode-result"></p>
+        </div>
+
+        <!-- Wholesaler Entries -->
+        <div class="wholesaler" data-products="rice">
+            <h2>Wholesaler 1</h2>
+            <p>Phone: 1234567890</p>
+            <p>Location: Location 1</p>
+            <p><strong>Products:</strong> Rice</p>
+        </div>
+        <!-- Add more wholesaler divs here -->
+
+    </div>
+
+    <footer>
+        <p>&copy; HUSSAINshipping.PVT Ltd.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script>
+        function startBarcodeScanner() {
+            const scannerElement = document.getElementById('scanner');
+            const videoElement = document.getElementById('camera-feed');
+            const resultElement = document.getElementById('barcode-result');
+
+            scannerElement.style.display = 'block';
+
+            Quagga.init({
+                inputStream: {
+                    name: "Live",
+                    type: "LiveStream",
+                    target: videoElement // Attach the camera feed to the video element
+                },
+                decoder: {
+                    readers: ["code_128_reader", "ean_reader", "upc_reader"] // Barcode types to scan
+                }
+            }, function(err) {
+                if (err) {
+                    console.error(err);
+                    alert("Error starting scanner: " + err.message);
+                    return;
+                }
+                Quagga.start();
+            });
+
+            Quagga.onDetected(function(data) {
+                const code = data.codeResult.code;
+                resultElement.innerHTML = `Scanned Code: ${code}`;
+                
+                // Automatically use the scanned code to search
+                document.getElementById('searchInput').value = code;
+                filterWholesalers();
+
+                // Stop the scanner after scanning
+                Quagga.stop();
+                scannerElement.style.display = 'none';
+            });
+        }
+
+        function filterWholesalers() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const wholesalers = document.querySelectorAll('.wholesaler');
+
+            wholesalers.forEach(wholesaler => {
+                const products = wholesaler.getAttribute('data-products').toLowerCase();
+                if (products.includes(searchInput)) {
+                    wholesaler.style.display = 'block';
+                } else {
+                    wholesaler.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
