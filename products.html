@@ -64,18 +64,45 @@
 <body>
     <header>
         <h1>Our Products</h1>
+        <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="filterProducts()">
+<script>
+    function filterProducts() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const products = document.querySelectorAll('.product');
+        products.forEach(product => {
+            const productName = product.querySelector('h2').textContent.toLowerCase();
+            product.style.display = productName.includes(searchInput) ? 'block' : 'none';
+        });
+    }
+</script>
         
-        
+        <select id="categoryFilter" onchange="filterByCategory()">
+    <option value="all">All</option>
+    <option value="electronics">Electronics</option>
+    <option value="clothing">Clothing</option>
+    <option value="home">Home</option>
+</select>
+<script>
+    function filterByCategory() {
+        const category = document.getElementById('categoryFilter').value;
+        const products = document.querySelectorAll('.product');
+        products.forEach(product => {
+            const productCategory = product.getAttribute('data-category');
+            product.style.display = (category === 'all' || productCategory === category) ? 'block' : 'none';
+        });
+    }
+</script>
     </header>
    
     <div class="container">
-        <div class="product-list">
+        <div class="product-list" data-category="home">
             <!-- Example Product -->
             <div class="product">
                 <img src="example-product.jpg" alt="Product Image">
                 <h2>Product Name</h2>
                 <p>Price: $10</p>
-                <button>View Details</button>
+                <button onclick="location.href='product-details.html?id=123'">View Details</button>
+
             </div>
             <!-- Add more products here -->
         </div>
