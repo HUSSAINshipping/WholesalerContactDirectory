@@ -1,6 +1,6 @@
 {
-  "name": "Wholesaler Directory",
-  "short_name": "Directory",
+  "name": "Wholesaler Contact Directory",
+  "short_name": "Wholesaler",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
