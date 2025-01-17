@@ -11,56 +11,106 @@
             padding: 0;
             background-color: #f9f9f9;
         }
+        header, footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
         .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            background: white;
             padding: 2rem;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        img {
+        .product-image {
+            text-align: center;
+        }
+        .product-image img {
             max-width: 100%;
             border-radius: 8px;
         }
-        h1 {
-            font-size: 2rem;
+        .product-details h1 {
+            font-size: 1.8rem;
+            margin: 1rem 0;
         }
-        p {
-            font-size: 1rem;
+        .product-details p {
+            font-size: 1.2rem;
             color: #555;
         }
-        button {
+        .back-button {
+            display: inline-block;
             background-color: black;
             color: white;
-            border: none;
+            text-decoration: none;
             padding: 10px 20px;
-            cursor: pointer;
             border-radius: 5px;
+            margin-top: 20px;
         }
-        button:hover {
+        .back-button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="container" id="productDetails">
-        <!-- Product details will be inserted here -->
+    <header>
+        <h1>Product Details</h1>
+    </header>
+
+    <div class="container">
+        <div class="product-image">
+            <img id="productImage" src="" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <h1 id="productName">Product Name</h1>
+            <p id="productPrice">Price: $0</p>
+            <p id="productDescription">Description: This is a placeholder description.</p>
+        </div>
+        <a class="back-button" href="products.html">Back to Products</a>
     </div>
 
+    <footer>
+        <p>&copy; HUSSAINshipping.PVT Ltd.</p>
+    </footer>
+
     <script>
-        const product = JSON.parse(localStorage.getItem('selectedProduct'));
-        if (product) {
-            const detailsContainer = document.getElementById('productDetails');
-            detailsContainer.innerHTML = `
-                <img src="${product.image}" alt="${product.name}">
-                <h1>${product.name}</h1>
-                <p>${product.description}</p>
-                <p><strong>Price:</strong> ${product.price}</p>
-                <button onclick="window.history.back()">Go Back</button>
-            `;
+        // Mock data for products
+        const productData = {
+            "1": {
+                name: "Product 1",
+                price: "$10",
+                description: "This is a great product 1.",
+                image: "path-to-image1.png"
+            },
+            "2": {
+                name: "Product 2",
+                price: "$20",
+                description: "This is a great product 2.",
+                image: "path-to-image2.png"
+            },
+            "3": {
+                name: "Product 3",
+                price: "$30",
+                description: "This is a great product 3.",
+                image: "path-to-image3.png"
+            }
+        };
+
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // Populate product details
+        if (productId && productData[productId]) {
+            const product = productData[productId];
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('productPrice').textContent = `Price: ${product.price}`;
+            document.getElementById('productDescription').textContent = `Description: ${product.description}`;
+            document.getElementById('productImage').src = product.image;
         } else {
-            window.location.href = 'index.html';
+            document.querySelector('.container').innerHTML = '<p>Product not found.</p>';
         }
     </script>
 </body>
