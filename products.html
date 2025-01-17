@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -16,6 +17,12 @@
             color: white;
             text-align: center;
             padding: 1rem;
+        }
+        header input, header select {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
         }
         .container {
             padding: 2rem;
@@ -46,7 +53,6 @@
         }
         .product p {
             color: #555;
-            font-size: 1rem;
         }
         .product button {
             background-color: black;
@@ -82,63 +88,58 @@
             <option value="clothing">Clothing</option>
             <option value="home">Home</option>
         </select>
-        <script>
-            function filterProducts() {
-                const searchInput = document.getElementById('searchInput').value.toLowerCase();
-                const products = document.querySelectorAll('.product');
-                products.forEach(product => {
-                    const productName = product.querySelector('h2').textContent.toLowerCase();
-                    product.style.display = productName.includes(searchInput) ? 'block' : 'none';
-                });
-            }
-            function filterByCategory() {
-                const category = document.getElementById('categoryFilter').value;
-                const products = document.querySelectorAll('.product');
-                products.forEach(product => {
-                    const productCategory = product.getAttribute('data-category');
-                    product.style.display = (category === 'all' || productCategory === category) ? 'block' : 'none';
-                });
-            }
-        </script>
     </header>
-   
+
     <div class="container">
         <div class="product-list">
             <!-- Example Product -->
-            <div class="product" data-category="home" onclick="showDetails({name: 'Case', price: '$10', image: 'path-to-image.png', description: 'A protective 
-
-case.'})">
-                <img src="path-to-image.png" alt="Case">
-                <h2>Case</h2>
+            <div class="product" data-category="electronics">
+                <img src="path-to-image1.png" alt="Product 1">
+                <h2>Product 1</h2>
                 <p>Price: $10</p>
-                <button>View Details</button>
+                <button onclick="location.href='product-details.html?id=1'">View Details</button>
             </div>
-
-            <div class="product" data-category="electronics" onclick="showDetails({name: 'Headphones', price: '$20', image: 'path-to-headphones.png', description: 
-
-'High-quality wireless headphones.'})">
-                <img src="path-to-headphones.png" alt="Headphones">
-                <h2>Headphones</h2>
+            <div class="product" data-category="clothing">
+                <img src="path-to-image2.png" alt="Product 2">
+                <h2>Product 2</h2>
                 <p>Price: $20</p>
-                <button>View Details</button>
+                <button onclick="location.href='product-details.html?id=2'">View Details</button>
             </div>
-
-            <!-- Add more products as needed -->
+            <div class="product" data-category="home">
+                <img src="path-to-image3.png" alt="Product 3">
+                <h2>Product 3</h2>
+                <p>Price: $30</p>
+                <button onclick="location.href='product-details.html?id=3'">View Details</button>
+            </div>
         </div>
     </div>
-    
+
     <footer>
         <nav>
             <a href="index.html">Home</a> |
-            <a href="about.html">About</a>
+            <a href="about.html">About</a> 
+           
         </nav>
         <p>&copy; HUSSAINshipping.PVT Ltd.</p>
     </footer>
 
     <script>
-        function showDetails(product) {
-            localStorage.setItem('selectedProduct', JSON.stringify(product));
-            window.location.href = 'product-details.html';
+        function filterProducts() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const productName = product.querySelector('h2').textContent.toLowerCase();
+                product.style.display = productName.includes(searchInput) ? 'block' : 'none';
+            });
+        }
+
+        function filterByCategory() {
+            const category = document.getElementById('categoryFilter').value;
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const productCategory = product.getAttribute('data-category');
+                product.style.display = (category === 'all' || productCategory === category) ? 'block' : 'none';
+            });
         }
     </script>
 </body>
