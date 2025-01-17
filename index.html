@@ -49,13 +49,6 @@
             font-size: 1rem;
             color: #555;
         }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: black;
-            color: white;
-            margin-top: 2rem;
-        }
         .search-box {
             margin-bottom: 2rem;
             padding: 0.5rem;
@@ -64,31 +57,46 @@
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-        .nav-buttons {
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
-        .nav-buttons a {
-            display: flex;
+            justify-content: space-evenly;
             align-items: center;
-            justify-content: center;
+            padding: 0.5rem 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        footer a {
             text-decoration: none;
             color: white;
-            background-color: black;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            text-align: center;
+            flex: 1;
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
         }
-        .nav-buttons a:hover {
+        footer a span {
+            display: block;
+            font-size: 1.5rem;
+        }
+        footer a:hover {
             background-color: #45a049;
         }
-        .nav-buttons a img {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
+        body {
+            padding-bottom: 60px; /* Prevents content from being hidden behind the fixed footer */
+        }
+        @media (max-width: 600px) {
+            footer a {
+                font-size: 0.75rem;
+                padding: 0.4rem 0;
+            }
+            footer a span {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -97,22 +105,6 @@
         <h1>Wholesaler Contact Directory</h1>
     </header>
     <div class="container">
-        <!-- Navigation Buttons -->
-        <div class="nav-buttons">
-            <a href="index.html">
-                <img src="home-icon.png" alt="Home Icon">
-                Home
-            </a>
-            <a href="about.html">
-                <img src="about-icon.png" alt="About Icon">
-                About
-            </a>
-            <a href="products.html">
-                <img src="products-icon.png" alt="Products Icon">
-                Products
-            </a>
-        </div>
-
         <h1>Contact Details</h1>
 
         <!-- Search Box -->
@@ -124,8 +116,20 @@
         </div>
     </div>
 
+    <!-- Footer with Fixed Buttons -->
     <footer>
-        <p>&copy; HUSSAINshipping.PVT Ltd.</p>
+        <a href="index.html">
+            <span>🏠</span> <!-- Home Icon -->
+            Home
+        </a>
+        <a href="about.html">
+            <span>ℹ️</span> <!-- Info Icon -->
+            About
+        </a>
+        <a href="products.html">
+            <span>🛒</span> <!-- Cart Icon -->
+            Products
+        </a>
     </footer>
 
     <!-- Include the wholesaler data -->
