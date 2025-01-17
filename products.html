@@ -33,7 +33,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 1rem;
-            width: calc(33.333% - 20px); /* Adjust for 3 products per row */
+            width: calc(33.333% - 20px);
             text-align: center;
         }
         .product img {
@@ -49,7 +49,7 @@
             font-size: 1rem;
         }
         .product button {
-            background-color: #4CAF50;
+            background-color: black;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -59,73 +59,87 @@
         .product button:hover {
             background-color: #45a049;
         }
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+            padding: 5px 10px;
+            background-color: black;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: green;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Our Products</h1>
         <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="filterProducts()">
-<script>
-    function filterProducts() {
-        const searchInput = document.getElementById('searchInput').value.toLowerCase();
-        const products = document.querySelectorAll('.product');
-        products.forEach(product => {
-            const productName = product.querySelector('h2').textContent.toLowerCase();
-            product.style.display = productName.includes(searchInput) ? 'block' : 'none';
-        });
-    }
-</script>
-        
         <select id="categoryFilter" onchange="filterByCategory()">
-    <option value="all">All</option>
-    <option value="electronics">Electronics</option>
-    <option value="clothing">Clothing</option>
-    <option value="home">Home</option>
-</select>
-<script>
-    function filterByCategory() {
-        const category = document.getElementById('categoryFilter').value;
-        const products = document.querySelectorAll('.product');
-        products.forEach(product => {
-            const productCategory = product.getAttribute('data-category');
-            product.style.display = (category === 'all' || productCategory === category) ? 'block' : 'none';
-        });
-    }
-</script>
+            <option value="all">All</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="home">Home</option>
+        </select>
+        <script>
+            function filterProducts() {
+                const searchInput = document.getElementById('searchInput').value.toLowerCase();
+                const products = document.querySelectorAll('.product');
+                products.forEach(product => {
+                    const productName = product.querySelector('h2').textContent.toLowerCase();
+                    product.style.display = productName.includes(searchInput) ? 'block' : 'none';
+                });
+            }
+            function filterByCategory() {
+                const category = document.getElementById('categoryFilter').value;
+                const products = document.querySelectorAll('.product');
+                products.forEach(product => {
+                    const productCategory = product.getAttribute('data-category');
+                    product.style.display = (category === 'all' || productCategory === category) ? 'block' : 'none';
+                });
+            }
+        </script>
     </header>
    
     <div class="container">
-        <div class="product-list" data-category="home">
+        <div class="product-list">
             <!-- Example Product -->
-            <div class="product">
-                <img src="example-product.jpg" alt="Product Image">
-                <h2>Product Name</h2>
-                <p>Price: $10</p>
-                <button onclick="location.href='product-details.html?id=123'">View Details</button>
+            <div class="product" data-category="home" onclick="showDetails({name: 'Case', price: '$10', image: 'path-to-image.png', description: 'A protective 
 
+case.'})">
+                <img src="path-to-image.png" alt="Case">
+                <h2>Case</h2>
+                <p>Price: $10</p>
+                <button>View Details</button>
             </div>
-            <!-- Add more products here -->
+
+            <div class="product" data-category="electronics" onclick="showDetails({name: 'Headphones', price: '$20', image: 'path-to-headphones.png', description: 
+
+'High-quality wireless headphones.'})">
+                <img src="path-to-headphones.png" alt="Headphones">
+                <h2>Headphones</h2>
+                <p>Price: $20</p>
+                <button>View Details</button>
+            </div>
+
+            <!-- Add more products as needed -->
         </div>
     </div>
-     <footer>
+    
+    <footer>
         <nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a>
         </nav>
         <p>&copy; HUSSAINshipping.PVT Ltd.</p>
-        
-
     </footer>
-    <style>
-    nav a {
-        text-decoration: none;
-        color: white;
-        margin: 0 10px;
-        padding: 5px 10px;
-        background-color: Black;
-        border-radius: 5px;
-    }
-    nav a:hover {
-        background-color: #45a049;
-    }
-</style>
+
+    <script>
+        function showDetails(product) {
+            localStorage.setItem('selectedProduct', JSON.stringify(product));
+            window.location.href = 'product-details.html';
+        }
+    </script>
+</body>
+</html>
