@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retailer Account</title>
+</head>
+<body>
+    <header>
+        <h1>Your Account</h1>
+    </header>
+    <div id="account-info">
+        <!-- Retailer information will be dynamically loaded -->
+    </div>
+
+    <script>
+        // Display retailer details from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const name = localStorage.getItem('retailerName');
+            const phone = localStorage.getItem('retailerPhone');
+            const address = localStorage.getItem('retailerAddress');
+
+            if (name && phone && address) {
+                document.getElementById('account-info').innerHTML = `
+                    <h2>Welcome, ${name}</h2>
+                    <p><strong>Phone:</strong> ${phone}</p>
+                    <p><strong>Address:</strong> ${address}</p>
+                `;
+            } else {
+                document.getElementById('account-info').innerHTML = `
+                    <p>No account information available.</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
