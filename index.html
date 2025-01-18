@@ -138,21 +138,23 @@
     <!-- Dynamic loading script -->
     <script>
         function loadWholesalers() {
-            const container = document.querySelector('.container');
-            wholesalersData.forEach(wholesaler => {
-                const div = document.createElement('div');
-                div.className = 'wholesaler';
-                div.setAttribute('data-products', wholesaler.products);
+    const container = document.querySelector('.container');
+    wholesalersData.forEach(wholesaler => {
+        if (!wholesaler || !wholesaler.name) return; // Skip invalid entries
+        const div = document.createElement('div');
+        div.className = 'wholesaler';
+        div.setAttribute('data-products', wholesaler.products);
 
-                div.innerHTML = `
-                    <h2>${wholesaler.name}</h2>
-                    <p>Phone: ${wholesaler.phone}</p>
-                    <p>Location: ${wholesaler.location}</p>
-                    <p><strong>Products:</strong> ${wholesaler.products}</p>
-                `;
-                container.appendChild(div);
-            });
-        }
+        div.innerHTML = `
+            <h2>${wholesaler.name}</h2>
+            <p>Phone: ${wholesaler.phone}</p>
+            <p>Location: ${wholesaler.location}</p>
+            <p><strong>Products:</strong> ${wholesaler.products}</p>
+        `;
+        container.appendChild(div);
+    });
+}
+
 
         document.addEventListener('DOMContentLoaded', loadWholesalers);
     </script>
