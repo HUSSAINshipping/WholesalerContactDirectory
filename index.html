@@ -156,5 +156,21 @@
 
         document.addEventListener('DOMContentLoaded', loadWholesalers);
     </script>
+
+function filterWholesalers() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const wholesalers = document.querySelectorAll('.wholesaler');
+
+    wholesalers.forEach(wholesaler => {
+        const products = wholesaler.getAttribute('data-products').toLowerCase();
+        if (products.includes(filter)) {
+            wholesaler.style.display = '';
+        } else {
+            wholesaler.style.display = 'none';
+        }
+    });
+}
+
 </body>
 </html>
