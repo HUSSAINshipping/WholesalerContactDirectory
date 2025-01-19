@@ -43,10 +43,11 @@
             <span>🛒</span> <!-- Cart Icon -->
             Products
         </a>
-         <a href="#" id="dynamic-btn">
+         <a href="register.html" id="registerButton">
         <span>📝</span> <!-- Register Icon -->
         Register
     </a>
+        
     </footer>
 
     <!-- Include the wholesaler data -->
@@ -91,27 +92,16 @@ function filterWholesalers() {
     });
 }
     </script>
-     <script>
-        // Function to handle the dynamic button display
-        function updateFooterButton() {
-            const button = document.getElementById('dynamic-btn');
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
             const isRegistered = localStorage.getItem('isRegistered');
+            const registerButton = document.getElementById('registerButton');
 
+            // Hide the register button if the retailer is already registered
             if (isRegistered) {
-                // If registered, replace with "Account" button
-                button.innerHTML = '<span>👤</span> Account';
-                button.href = 'account.html'; // Redirect to account page
-            } else {
-                // If not registered, keep "Register" button
-                button.innerHTML = '<span>📝</span> Register';
-                button.href = 'register.html'; // Redirect to registration page
+                registerButton.style.display = 'none';
             }
-        }
-
-        // Call the function on page load
-        document.addEventListener('DOMContentLoaded', updateFooterButton);
+        });
     </script>
-  
-
 </body>
 </html>
