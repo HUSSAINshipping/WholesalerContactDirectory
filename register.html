@@ -96,22 +96,46 @@
         &copy; HUSSAINshipping Pvt. Ltd
     </footer>
 
-   
-<script>
+   <script>
     function handleRegistration() {
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
         const address = document.getElementById('address').value;
 
-        // Save the registration status and details to localStorage
-        localStorage.setItem('isRegistered', true);
-        localStorage.setItem('retailerName', name);
-        localStorage.setItem('retailerPhone', phone);
-        localStorage.setItem('retailerAddress', address);
+        // Data object to send to Google Sheets
+        const data = { name, phone, address };
 
-        // Redirect to the account page
-        window.location.href = 'account.html';
+        // Replace 'YOUR_WEB_APP_URL' with your Apps Script Web App URL
+        const googleSheetsURL = "https://script.google.com/macros/s/AKfycbyuwnyWDASDVLbPb8SM7xAgF9f2kJtiHHvqESSgo_jzZbe2YYIb4a8ELePEkRgipzNx/exec";
+
+        // Send data to Google Sheets
+        fetch(googleSheetsURL, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "application/json" },
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.status === "success") {
+                // Save the registration status and details locally
+                localStorage.setItem('isRegistered', true);
+                localStorage.setItem('retailerName', name);
+                localStorage.setItem('retailerPhone', phone);
+                localStorage.setItem('retailerAddress', address);
+
+                // Redirect to the account page
+                window.location.href = 'account.html';
+            } else {
+                alert("Failed to submit registration data. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again later.");
+        });
     }
 </script>
+
+
 </body>
 </html>
