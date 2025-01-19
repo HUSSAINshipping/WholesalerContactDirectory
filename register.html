@@ -89,7 +89,29 @@
     </div>
 
     <footer>
+        <a href="index.html">
+            <span>🏠</span> <!-- Home Icon -->
+            Home
+        </a>
         &copy; HUSSAINshipping Pvt. Ltd
     </footer>
+
+   
+<script>
+    function handleRegistration() {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+
+        // Save the registration status and details to localStorage
+        localStorage.setItem('isRegistered', true);
+        localStorage.setItem('retailerName', name);
+        localStorage.setItem('retailerPhone', phone);
+        localStorage.setItem('retailerAddress', address);
+
+        // Redirect to the account page
+        window.location.href = 'account.html';
+    }
+</script>
 </body>
 </html>
