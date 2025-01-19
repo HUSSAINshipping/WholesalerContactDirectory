@@ -91,43 +91,27 @@ function filterWholesalers() {
     });
 }
     </script>
-    <script>
-    // Function to handle the dynamic button display
-    function updateFooterButton() {
-        const button = document.getElementById('dynamic-btn');
-        const isRegistered = localStorage.getItem('isRegistered');
+     <script>
+        // Function to handle the dynamic button display
+        function updateFooterButton() {
+            const button = document.getElementById('dynamic-btn');
+            const isRegistered = localStorage.getItem('isRegistered');
 
-        if (isRegistered) {
-            // If registered, replace with "Account" button
-            button.innerHTML = '<span>👤</span> Account';
-            button.href = 'account.html'; // Redirect to account page
-        } else {
-            // If not registered, keep "Register" button
-            button.innerHTML = '<span>📝</span> Register';
-            button.href = 'register.html'; // Redirect to registration page
+            if (isRegistered) {
+                // If registered, replace with "Account" button
+                button.innerHTML = '<span>👤</span> Account';
+                button.href = 'account.html'; // Redirect to account page
+            } else {
+                // If not registered, keep "Register" button
+                button.innerHTML = '<span>📝</span> Register';
+                button.href = 'register.html'; // Redirect to registration page
+            }
         }
-    }
 
-    // Call the function on page load
-    document.addEventListener('DOMContentLoaded', updateFooterButton);
-</script>
-    <script>
-    function handleRegistration() {
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const address = document.getElementById('address').value;
-
-        // Save the registration status and details to localStorage
-        localStorage.setItem('isRegistered', true);
-        localStorage.setItem('retailerName', name);
-        localStorage.setItem('retailerPhone', phone);
-        localStorage.setItem('retailerAddress', address);
-
-        // Redirect to the account page
-        window.location.href = 'account.html';
-    }
-</script>
-
+        // Call the function on page load
+        document.addEventListener('DOMContentLoaded', updateFooterButton);
+    </script>
+  
 
 </body>
 </html>
