@@ -89,8 +89,9 @@
 bnRtqHvElih-DFAXUCqLhw/viewform?embedded=true" width="640" height="843" 
 
 frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-            Loading…
+          
         </iframe>  
+          <button onclick="markAsRegistered()">Complete Registration</button>
            
     </div>
   
@@ -104,7 +105,15 @@ frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
        
     </footer>
 
-  
+  <script>
+        function markAsRegistered() {
+            // Save the registration status in localStorage
+            localStorage.setItem('isRegistered', true);
+
+            // Redirect back to the homepage
+            window.location.href = 'index.html';
+        }
+    </script>
 
 
 </body>
