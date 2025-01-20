@@ -6,7 +6,26 @@
     <title>Product Details</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-       
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        .container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
         .product-image {
             text-align: center;
         }
@@ -34,7 +53,35 @@
         .back-button:hover {
             background-color: #45a049;
         }
-         
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 0.5rem 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        footer a {
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            flex: 1;
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+        footer a span {
+            display: block;
+            font-size: 1.5rem;
+        }
+        footer a:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -49,7 +96,9 @@
         <div class="product-details">
             <h1 id="productName">Product Name</h1>
             <p id="productPrice">Price: $0</p>
-            <p id="productDescription">Description: This is a placeholder description.</p>
+            <p id="productDescription">Description: This is a placeholder 
+
+description.</p>
         </div>
         <a class="back-button" href="products.html">Back to Products</a>
     </div>
@@ -59,42 +108,30 @@
     </footer>
 
     <script>
-        // Mock data for products
-        const productData = {
-            "1": {
-                name: "Product 1",
-                price: "$10",
-                description: "This is a great product 1.",
-                image: "path-to-image1.png"
-            },
-            "2": {
-                name: "Product 2",
-                price: "$20",
-                description: "This is a great product 2.",
-                image: "path-to-image2.png"
-            },
-            "3": {
-                name: "Product 3",
-                price: "$30",
-                description: "This is a great product 3.",
-                image: "path-to-image3.png"
+        async function loadProductDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const response = await fetch('products.json');
+            const products = await response.json();
+            const product = products.find(p => p.id === productId);
+
+            if (product) {
+                document.getElementById('productName').textContent = product.name;
+                document.getElementById('productPrice').textContent = `Price: 
+
+${product.price}`;
+                document.getElementById('productDescription').textContent = 
+
+`Description: ${product.description}`;
+                document.getElementById('productImage').src = product.image;
+            } else {
+                document.querySelector('.container').innerHTML = '<p>Product not 
+
+found.</p>';
             }
-        };
-
-        // Get product ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('id');
-
-        // Populate product details
-        if (productId && productData[productId]) {
-            const product = productData[productId];
-            document.getElementById('productName').textContent = product.name;
-            document.getElementById('productPrice').textContent = `Price: ${product.price}`;
-            document.getElementById('productDescription').textContent = `Description: ${product.description}`;
-            document.getElementById('productImage').src = product.image;
-        } else {
-            document.querySelector('.container').innerHTML = '<p>Product not found.</p>';
         }
+
+        document.addEventListener('DOMContentLoaded', loadProductDetails);
     </script>
 </body>
 </html>
