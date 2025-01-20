@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "name": "drugs",
+        "price": "$10",
+        "description": "This is a great product: drugs.",
+        "image": "path-to-image1.png",
+        "category": "electronics"
+    },
+    {
+        "id": "2",
+        "name": "rice",
+        "price": "$20",
+        "description": "This is a great product: rice.",
+        "image": "path-to-image2.png",
+        "category": "clothing"
+    },
+    {
+        "id": "3",
+        "name": "wheat",
+        "price": "$30",
+        "description": "This is a great product: wheat.",
+        "image": "path-to-image3.png",
+        "category": "home"
+    },
+    {
+        "id": "4",
+        "name": "cocaine",
+        "price": "$30",
+        "description": "This is a great product: cocaine.",
+        "image": "path-to-image4.png",
+        "category": "home"
+    }
+]
