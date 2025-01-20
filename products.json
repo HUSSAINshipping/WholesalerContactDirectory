@@ -25,10 +25,18 @@
     },
     {
         "id": "4",
-        "name": "cocaine",
+        "name": "cold drinks",
         "price": "$30",
-        "description": "This is a great product: cocaine.",
+        "description": "This is a great product: cold drinks.",
         "image": "path-to-image4.png",
         "category": "home"
+    },
+     {
+        "id": "5",
+        "name": "chips",
+        "price": "$30",
+        "description": "This is a great product: chips.",
+        "image": "path-to-image4.png",
+        "category": "clothing"
     }
 ]
