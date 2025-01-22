@@ -1,42 +1,42 @@
 [
     {
         "id": "1",
-        "name": "drugs",
+        "name": "Sweets",
         "price": "$10",
-        "description": "This is a great product: drugs.",
-        "image": "path-to-image1.png",
+        "description": "wholesalers who sell sweets are:",
+        "image": "C:\Users\user\Videos\sweets.jpg",
         "category": "electronics"
     },
     {
         "id": "2",
         "name": "rice",
         "price": "$20",
-        "description": "This is a great product: rice.",
-        "image": "path-to-image2.png",
+        "description": "wholesalers who sell rice are:",
+        "image": "C:\Users\user\Videos\rice.jpg",
         "category": "clothing"
     },
     {
         "id": "3",
         "name": "wheat",
         "price": "$30",
-        "description": "This is a great product: wheat.",
-        "image": "path-to-image3.png",
+        "description": "wholesalers who sell wheat are:",
+        "image": "C:\Users\user\Videos\wheat.jpg",
         "category": "home"
     },
     {
         "id": "4",
         "name": "cold drinks",
         "price": "$30",
-        "description": "This is a great product: cold drinks.",
-        "image": "path-to-image4.png",
+        "description": "wholesalers who sell cold drinks are:",
+        "image": "C:\Users\user\Videos\colddrinks.jpg",
         "category": "home"
     },
      {
         "id": "5",
         "name": "chips",
         "price": "$30",
-        "description": "This is a great product: chips.",
-        "image": "path-to-image4.png",
+        "description": "wholesalers who sell chips are:",
+        "image": "C:\Users\user\Videos\chips2.jpg",
         "category": "clothing"
     }
 ]
