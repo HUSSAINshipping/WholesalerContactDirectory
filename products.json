@@ -1,42 +1,42 @@
 [
     {
         "id": "1",
-        "name": "Sweets",
+        "name": "Chewing gums",
         "price": "0.5rs-1rs",
         "description": "wholesalers who sell sweets are:",
         "image": "images/sweets.jpg",
-        "category": "electronics"
+        "category": "Tophies"
     },
     {
         "id": "2",
-        "name": "rice",
+        "name": "Rice(chawal)",
         "price": "50rs-100rs",
         "description": "wholesalers who sell rice are:",
         "image": "images/rice",
-        "category": "clothing"
+        "category": "Groceries"
     },
     {
         "id": "3",
-        "name": "wheat",
+        "name": "Wheat(atta)",
         "price": "20rs-40rs",
         "description": "wholesalers who sell wheat are:",
         "image": "images/wheat.jpg",
-        "category": "home"
+        "category": "Groceries"
     },
     {
         "id": "4",
-        "name": "cold drinks",
+        "name": "Cold drinks",
         "price": "5rs-200rs",
         "description": "wholesalers who sell cold drinks are:",
         "image": "images/colddrinks",
-        "category": "home"
+        "category": "Drinks"
     },
      {
         "id": "5",
-        "name": "chips",
+        "name": "Chips",
         "price": "3rs-50rs",
         "description": "wholesalers who sell chips are:",
         "image": "images/chips",
-        "category": "clothing"
+        "category": "Snacks"
     }
 ]
