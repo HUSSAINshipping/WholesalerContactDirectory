@@ -4,7 +4,7 @@
         "name": "Sweets",
         "price": "$10",
         "description": "wholesalers who sell sweets are:",
-        "image": "C:\Users\user\Videos\sweets.jpg",
+        "image": "",
         "category": "electronics"
     },
     {
@@ -12,7 +12,7 @@
         "name": "rice",
         "price": "$20",
         "description": "wholesalers who sell rice are:",
-        "image": "C:\Users\user\Videos\rice.jpg",
+        "image": "",
         "category": "clothing"
     },
     {
@@ -20,7 +20,7 @@
         "name": "wheat",
         "price": "$30",
         "description": "wholesalers who sell wheat are:",
-        "image": "C:\Users\user\Videos\wheat.jpg",
+        "image": "",
         "category": "home"
     },
     {
@@ -28,7 +28,7 @@
         "name": "cold drinks",
         "price": "$30",
         "description": "wholesalers who sell cold drinks are:",
-        "image": "C:\Users\user\Videos\colddrinks.jpg",
+        "image": "",
         "category": "home"
     },
      {
@@ -36,7 +36,7 @@
         "name": "chips",
         "price": "$30",
         "description": "wholesalers who sell chips are:",
-        "image": "C:\Users\user\Videos\chips2.jpg",
+        "image": "",
         "category": "clothing"
     }
 ]
