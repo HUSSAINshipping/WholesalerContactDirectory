@@ -36,7 +36,7 @@
         "name": "chips",
         "price": "$30",
         "description": "wholesalers who sell chips are:",
-        "image": "",
+        "image": "images/chips",
         "category": "clothing"
     }
 ]
