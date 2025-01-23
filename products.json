@@ -2,7 +2,7 @@
     {
         "id": "1",
         "name": "Sweets",
-        "price": "$10",
+        "price": "0.5rs-1rs",
         "description": "wholesalers who sell sweets are:",
         "image": "images/sweets.jpg",
         "category": "electronics"
@@ -10,7 +10,7 @@
     {
         "id": "2",
         "name": "rice",
-        "price": "$20",
+        "price": "50rs-100rs",
         "description": "wholesalers who sell rice are:",
         "image": "images/rice",
         "category": "clothing"
@@ -18,7 +18,7 @@
     {
         "id": "3",
         "name": "wheat",
-        "price": "$30",
+        "price": "20rs-40rs",
         "description": "wholesalers who sell wheat are:",
         "image": "images/wheat.jpg",
         "category": "home"
@@ -26,7 +26,7 @@
     {
         "id": "4",
         "name": "cold drinks",
-        "price": "$30",
+        "price": "5rs-200rs",
         "description": "wholesalers who sell cold drinks are:",
         "image": "",
         "category": "home"
@@ -34,7 +34,7 @@
      {
         "id": "5",
         "name": "chips",
-        "price": "$30",
+        "price": "3rs-50rs",
         "description": "wholesalers who sell chips are:",
         "image": "images/chips",
         "category": "clothing"
