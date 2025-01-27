@@ -87,7 +87,10 @@
 <body>
     <header>
         <h1>Product Details</h1>
-    </header>
+    
+     
+  </header>
+
 
     <div class="container">
         <div class="product-image">
@@ -97,15 +100,20 @@
             <h1 id="productName">Product Name</h1>
             <p id="productPrice">Price: $0</p>
             <p id="productDescription">Description: This is a placeholder 
-
-description.</p>
+                  description.</p>
+           <p>Available Wholesalers:</h3>
+           <ul id="wholesalers-list"></ul>
         </div>
         <a class="back-button" href="products.html">Back to Products</a>
     </div>
 
     <footer>
-        <p>&copy; HUSSAINshipping.PVT Ltd.</p>
+        <p>&copy; HUSSAINshipping</p>
     </footer>
+
+
+  
+
 <script>
         // Fetch product data from products.json
         fetch('products.json')
@@ -119,15 +127,38 @@ description.</p>
                 
                 if (product) {
                     document.getElementById('productName').textContent = product.name;
-                    document.getElementById('productPrice').textContent = `Price: ${product.price}`;
-                    document.getElementById('productDescription').textContent = `Description: ${product.description}`;
+                    document.getElementById('productPrice').textContent = `Price: 
+
+${product.price}`;
+                    document.getElementById('productDescription').textContent = 
+
+`Description: ${product.description}`;
                     document.getElementById('productImage').src = product.image;
                 } else {
-                    document.querySelector('.container').innerHTML = '<p>Product not found.</p>';
+                    document.querySelector('.container').innerHTML = '<p>Product not 
+
+found.</p>';
                 }
             })
             .catch(error => console.log(error));
-    </script>
+ 
+         // Populate wholesalers
+   const wholesalersList = document.getElementById("wholesalers-list");
+        if (wholesalerInfo) {
+          wholesalerInfo.wholesalers.forEach(wholesaler => {
+            const li = document.createElement("li");
+            li.innerText = `${wholesaler.name} - Contact: ${wholesaler.contact}`;
+            wholesalersList.appendChild(li);
+          });
+        } else {
+          wholesalersList.innerHTML = "<li>No wholesalers available for this   
+
+product.</li>";
+        }
+    </script>  
+
    
+</body>
+</html>
 </body>
 </html>
