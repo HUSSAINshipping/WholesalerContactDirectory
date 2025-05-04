@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://HUSSAINshipping.github.io/WholesalerContactDirectory/sitemap.xml
